@@ -4,20 +4,28 @@ import java.util.Scanner;
 
 public class Harjoitustyo2 {
 
-    public static final char[] imageChars = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
+    public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
+    public static final String SELECTION_TEXT = "printa/printi/info/filter [n]/reset/quit?";
 
     public static void main(String[] args) {
         printHello();
         String fileName = getFileName(args);
+
         if (fileName != null) {
+            boolean jatka = true;
 
             int[][] image = loadImage(fileName);
 
+            while (jatka) {
+
+                System.out.println(SELECTION_TEXT);
+                String userChoice =
+
+            }
 
             printImage(image);
-        } else {
-            printEnd();
         }
+        printEnd();
 
     }
 
@@ -26,7 +34,7 @@ public class Harjoitustyo2 {
 
             for (int i = 0; i < kuva.length; i++) {
                 for (int j = 0; j < kuva[i].length; j++) {
-                    System.out.print(imageChars[kuva[i][j]]);
+                    System.out.print(IMAGE_CHARS[kuva[i][j]]);
                 }
                 System.out.println();
             }
@@ -116,7 +124,7 @@ public class Harjoitustyo2 {
         System.out.println("Loppu");
     }
 
-    public static void printHello(){
+    public static void printHello() {
         System.out.println("-------------------\n" +
                 "| A S C I I A r t |\n" +
                 "------------------- ");
