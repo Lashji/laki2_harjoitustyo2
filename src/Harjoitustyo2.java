@@ -7,7 +7,7 @@ public class Harjoitustyo2 {
     public static final char[] imageChars = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
 
     public static void main(String[] args) {
-
+        printHello();
         String fileName = getFileName(args);
         if (fileName != null) {
 
@@ -52,6 +52,7 @@ public class Harjoitustyo2 {
             File tiedosto = new File(nimi);
             Scanner sc = new Scanner(tiedosto);
 
+
             int[][] kuva = new int[10][10];
 
             int indeksi = 0;
@@ -59,7 +60,7 @@ public class Harjoitustyo2 {
 
             while (sc.hasNextLine()) {
 
-                addRow(kuva, indeksi, sc.nextLine());
+                kuva = addRow(kuva, indeksi, sc.nextLine());
                 indeksi++;
 
             }
@@ -74,7 +75,7 @@ public class Harjoitustyo2 {
         return null;
     }
 
-    public static void addRow(int[][] kuva, int indeksi, String line) {
+    public static int[][] addRow(int[][] kuva, int indeksi, String line) {
         if (indeksi >= kuva.length) {
 
             kuva = copyArrayAndMakeItBigger(kuva, 0);
@@ -92,6 +93,7 @@ public class Harjoitustyo2 {
 
         }
 
+        return kuva;
     }
 
     public static int[] getRowsAsInt(String line) {
@@ -114,6 +116,12 @@ public class Harjoitustyo2 {
         System.out.println("Loppu");
     }
 
+    public static void printHello(){
+        System.out.println("-------------------\n" +
+                "| A S C I I A r t |\n" +
+                "------------------- ");
+    }
+
     public static int[][] copyArrayAndMakeItBigger(int[][] arr, int index) {
 
         int[][] copy = index == 0 ? new int[arr.length + 1][arr[0].length] :
@@ -127,4 +135,29 @@ public class Harjoitustyo2 {
         return copy;
     }
 
+    public int laskeKeskiarvo(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
+        double summa = 0;
+        double arvoja = 0;
+        int xkerroin = (int) Math.floor(filterXLen / 2);
+        int ykerroin = (int) Math.floor(filterYLen / 2);
+
+        for (int k = 0; k < filterXLen; k++) {
+
+            for (int i = x - xkerroin; i < x + xkerroin; i++) {
+                for (int j = y - ykerroin; j < y + ykerroin; j++) {
+                    if (isInsideBounds(kuva, i, j)) {
+                        summa += kuva[i][j];
+                        arvoja++;
+                    }
+                }
+            }
+
+        }
+
+        return (int) Math.round(summa / arvoja);
+    }
+
+    public static boolean isInsideBounds(int[][] kuva, int x, int y) {
+        return (x >= 0 && y >= 0) && (x <= kuva.length && y <= kuva[0].length);
+    }
 }
