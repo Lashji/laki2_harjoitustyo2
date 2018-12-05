@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Harjoitustyo2 {
 
     public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
-    public static final String SELECTION_TEXT = "printa/printi/info/filterImage [n]/reset/quit?";
+    public static final String SELECTION_TEXT = "printa/printi/info/filter [n]/reset/quit?";
 
     public static void main(String[] args) {
         printHello();
@@ -18,7 +18,6 @@ public class Harjoitustyo2 {
             int[][] image = loadImage(fileName, sc);
 
             while (jatka) {
-
 
                 jatka = doOperation(sc, image);
             }
@@ -50,6 +49,8 @@ public class Harjoitustyo2 {
                 }
                 System.out.println();
             }
+        } else {
+            System.out.println("Kuva null");
         }
     }
 
@@ -65,32 +66,47 @@ public class Harjoitustyo2 {
                 case "printa":
                     printImage(tmp);
                     break;
-                case "printb":
+                case "printi":
                     printImageAsNumbers(tmp);
                     break;
                 case "info":
                     printInfo();
                     break;
-                case "filterImage":
-                    tmp = filterImage(tmp);
+                case "filter":
+                    tmp = filterImage(tmp, sc);
+                    System.out.println("filtered");
                     break;
                 case "reset":
                     return true;
                 case "quit":
                     cont = false;
+                    break;
             }
         }
 
         return false;
     }
 
-    public static void printInfo(){
+    public static void printInfo() {
 
     }
 
-    public static int[][] filterImage(int[][] image){
+    public static int[][] filterImage(int[][] image, Scanner sc) {
+        sc = new Scanner(System.in);
+        System.out.println("Give xlen");
+        int xlen = Integer.parseInt(sc.nextLine());
+        System.out.println("Give ylen");
+        int ylen = Integer.parseInt(sc.nextLine());
+
         int[][] tmp = image;
 
+        for (int i = 0; i < tmp.length; i++) {
+            for (int j = 0; j < tmp[i].length; j++) {
+
+                tmp[i][j] = countAverage(tmp, i, j, xlen, ylen);
+
+            }
+        }
 
 
         return tmp;
@@ -187,7 +203,7 @@ public class Harjoitustyo2 {
         return copy;
     }
 
-    public int countAverage(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
+    public static int countAverage(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
         double summa = 0;
         double arvoja = 0;
         int xkerroin = (int) Math.floor(filterXLen / 2);
