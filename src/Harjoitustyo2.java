@@ -5,22 +5,22 @@ import java.util.Scanner;
 public class Harjoitustyo2 {
 
     public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
-    public static final String SELECTION_TEXT = "printa/printi/info/filter [n]/reset/quit?";
+    public static final String SELECTION_TEXT = "printa/printi/info/filterImage [n]/reset/quit?";
 
     public static void main(String[] args) {
         printHello();
         String fileName = getFileName(args);
+        Scanner sc = new Scanner(System.in);
 
         if (fileName != null) {
             boolean jatka = true;
 
-            int[][] image = loadImage(fileName);
+            int[][] image = loadImage(fileName, sc);
 
             while (jatka) {
 
-                System.out.println(SELECTION_TEXT);
-                String userChoice =
 
+                jatka = doOperation(sc, image);
             }
 
             printImage(image);
@@ -53,12 +53,56 @@ public class Harjoitustyo2 {
         }
     }
 
-    public static int[][] loadImage(String nimi) {
+    public static boolean doOperation(Scanner sc, int[][] image) {
+        boolean cont = true;
+        int[][] tmp = image;
+
+        while (cont) {
+            System.out.println(SELECTION_TEXT);
+
+            String userChoice = sc.nextLine();
+            switch (userChoice.toLowerCase()) {
+                case "printa":
+                    printImage(tmp);
+                    break;
+                case "printb":
+                    printImageAsNumbers(tmp);
+                    break;
+                case "info":
+                    printInfo();
+                    break;
+                case "filterImage":
+                    tmp = filterImage(tmp);
+                    break;
+                case "reset":
+                    return true;
+                case "quit":
+                    cont = false;
+            }
+        }
+
+        return false;
+    }
+
+    public static void printInfo(){
+
+    }
+
+    public static int[][] filterImage(int[][] image){
+        int[][] tmp = image;
+
+
+
+        return tmp;
+
+    }
+
+    public static int[][] loadImage(String name, Scanner sc) {
 
         try {
 
-            File tiedosto = new File(nimi);
-            Scanner sc = new Scanner(tiedosto);
+            File tiedosto = new File(name);
+            sc = new Scanner(tiedosto);
 
 
             int[][] kuva = new int[10][10];
@@ -72,7 +116,7 @@ public class Harjoitustyo2 {
                 indeksi++;
 
             }
-
+            sc.close();
             return kuva;
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -143,7 +187,7 @@ public class Harjoitustyo2 {
         return copy;
     }
 
-    public int laskeKeskiarvo(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
+    public int countAverage(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
         double summa = 0;
         double arvoja = 0;
         int xkerroin = (int) Math.floor(filterXLen / 2);
@@ -168,4 +212,6 @@ public class Harjoitustyo2 {
     public static boolean isInsideBounds(int[][] kuva, int x, int y) {
         return (x >= 0 && y >= 0) && (x <= kuva.length && y <= kuva[0].length);
     }
+
+
 }
