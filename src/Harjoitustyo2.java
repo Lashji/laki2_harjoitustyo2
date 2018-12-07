@@ -15,14 +15,12 @@ public class Harjoitustyo2 {
         if (fileName != null) {
             boolean jatka = true;
 
-            int[][] image = loadImage(fileName, sc);
+                int[][] image = loadImage(fileName, sc);
 
             while (jatka) {
-
-                jatka = doOperation(sc, image);
+                jatka = doOperation(sc, copyImage(image));
             }
 
-            printImage(image);
         }
         printEnd();
 
@@ -223,6 +221,17 @@ public class Harjoitustyo2 {
         }
 
         return (int) Math.round(summa / arvoja);
+    }
+
+
+    public static int[][] copyImage(int[][] image){
+        int[][] tmp = new int[image.length][image[0].length];
+        for (int i = 0; i < image.length; i++) {
+            for (int j = 0; j < image[i].length; j++) {
+                tmp[i][j] = image[i][j];
+            }
+        }
+        return tmp;
     }
 
     public static boolean isInsideBounds(int[][] kuva, int x, int y) {
