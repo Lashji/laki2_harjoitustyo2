@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Harjoitustyo2 {
 
     public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
     public static final String SELECTION_TEXT = "printa/printi/info/filter [n]/reset/quit?";
+
 
     public static void main(String[] args) {
         printHello();
@@ -15,12 +17,14 @@ public class Harjoitustyo2 {
         if (fileName != null) {
             boolean jatka = true;
 
-                int[][] image = loadImage(fileName, sc);
+            int[][] image = loadImage(fileName, sc);
+            if (image != null) {
 
-            while (jatka) {
-                jatka = doOperation(sc, copyImage(image));
+                while (jatka) {
+                    jatka = doOperation(copyImage(image));
+                }
+
             }
-
         }
         printEnd();
 
@@ -31,8 +35,12 @@ public class Harjoitustyo2 {
 
             for (int i = 0; i < kuva.length; i++) {
                 for (int j = 0; j < kuva[i].length; j++) {
+                    if (String.valueOf(kuva[i][j]).length() == 1){
+                        System.out.print(" ");
+                    }
                     System.out.print(IMAGE_CHARS[kuva[i][j]]);
                 }
+
                 System.out.println();
             }
         }
@@ -52,34 +60,31 @@ public class Harjoitustyo2 {
         }
     }
 
-    public static boolean doOperation(Scanner sc, int[][] image) {
+    public static boolean doOperation(int[][] image) {
         boolean cont = true;
         int[][] tmp = image;
 
         while (cont) {
             System.out.println(SELECTION_TEXT);
 
-            String userChoice = sc.nextLine();
-            switch (userChoice.toLowerCase()) {
-                case "printa":
-                    printImage(tmp);
-                    break;
-                case "printi":
-                    printImageAsNumbers(tmp);
-                    break;
-                case "info":
-                    printInfo();
-                    break;
-                case "filter":
-                    tmp = filterImage(tmp, sc);
-                    System.out.println("filtered");
-                    break;
-                case "reset":
-                    return true;
-                case "quit":
-                    cont = false;
-                    break;
+            String userChoice = In.readString();
+
+            if (userChoice.equalsIgnoreCase("printa")) {
+                printImage(tmp);
+            } else if (userChoice.equalsIgnoreCase("printi")) {
+                printImageAsNumbers(tmp);
+            } else if (userChoice.equalsIgnoreCase("info")) {
+                printInfo();
+            } else if (userChoice.startsWith("filter")) {
+                tmp = filterImage(tmp, getFilterLen(userChoice));
+
+                System.out.println("filtered");
+            } else if (userChoice.equalsIgnoreCase("reset")) {
+                return true;
+            } else if (userChoice.equalsIgnoreCase("quit")) {
+                cont = false;
             }
+
         }
 
         return false;
@@ -89,19 +94,25 @@ public class Harjoitustyo2 {
 
     }
 
-    public static int[][] filterImage(int[][] image, Scanner sc) {
-        sc = new Scanner(System.in);
-        System.out.println("Give xlen");
-        int xlen = Integer.parseInt(sc.nextLine());
-        System.out.println("Give ylen");
-        int ylen = Integer.parseInt(sc.nextLine());
+    public static int getFilterLen(String userChoice) {
+            if (userChoice.equalsIgnoreCase("filter")){
+                return 3;
+            }
+
+            int num = Character.getNumericValue(
+                    userChoice.charAt(userChoice.length() - 1) );
+
+            return num;
+    }
+
+    public static int[][] filterImage(int[][] image, int filterSize) {
 
         int[][] tmp = image;
 
         for (int i = 0; i < tmp.length; i++) {
             for (int j = 0; j < tmp[i].length; j++) {
 
-                tmp[i][j] = countAverage(tmp, i, j, xlen, ylen);
+                tmp[i][j] = countAverage(tmp, i, j, filterSize);
 
             }
         }
@@ -135,7 +146,7 @@ public class Harjoitustyo2 {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
 
         return null;
@@ -148,7 +159,7 @@ public class Harjoitustyo2 {
 
         }
 
-        int[] nums = getRowsAsInt(line);
+        int[] nums = getRowAsInt(line);
         for (int i = 0; i < nums.length; i++) {
 
             if (i >= kuva[indeksi].length) {
@@ -162,11 +173,12 @@ public class Harjoitustyo2 {
         return kuva;
     }
 
-    public static int[] getRowsAsInt(String line) {
-        String[] lines = line.split("[ ]");
+    public static int[] getRowAsInt(String line) {
+        String[] lines = line.split("[\\s]+");
         int[] nums = new int[lines.length];
 
         for (int i = 0; i < lines.length; i++) {
+
             nums[i] = Integer.parseInt(lines[i]);
         }
 
@@ -179,7 +191,7 @@ public class Harjoitustyo2 {
 
 
     public static void printEnd() {
-        System.out.println("Loppu");
+        System.out.println("Bye, see you soon.");
     }
 
     public static void printHello() {
@@ -201,19 +213,21 @@ public class Harjoitustyo2 {
         return copy;
     }
 
-    public static int countAverage(int[][] kuva, int x, int y, int filterXLen, int filterYLen) {
+    public static int countAverage(int[][] kuva, int x, int y, int filterSize) {
         double summa = 0;
         double arvoja = 0;
-        int xkerroin = (int) Math.floor(filterXLen / 2);
-        int ykerroin = (int) Math.floor(filterYLen / 2);
+        int size = (int) Math.floor(filterSize / 2);
 
-        for (int k = 0; k < filterXLen; k++) {
+        for (int k = 0; k < filterSize; k++) {
 
-            for (int i = x - xkerroin; i < x + xkerroin; i++) {
-                for (int j = y - ykerroin; j < y + ykerroin; j++) {
-                    if (isInsideBounds(kuva, i, j)) {
-                        summa += kuva[i][j];
-                        arvoja++;
+            for (int i = x - size; i < x + size; i++) {
+                for (int j = y - size; j < y + size; j++) {
+                    if (i >= 0 && y >= 0) {
+
+                        if (isInsideBounds(kuva, i, j)) {
+                            summa += kuva[i][j];
+                            arvoja++;
+                        }
                     }
                 }
             }
@@ -224,18 +238,20 @@ public class Harjoitustyo2 {
     }
 
 
-    public static int[][] copyImage(int[][] image){
+    public static int[][] copyImage(int[][] image) {
         int[][] tmp = new int[image.length][image[0].length];
         for (int i = 0; i < image.length; i++) {
+
             for (int j = 0; j < image[i].length; j++) {
                 tmp[i][j] = image[i][j];
             }
+
         }
         return tmp;
     }
 
     public static boolean isInsideBounds(int[][] kuva, int x, int y) {
-        return (x >= 0 && y >= 0) && (x <= kuva.length && y <= kuva[0].length);
+        return (x >= 0 && y >= 0) && (x < kuva.length && y < kuva[0].length);
     }
 
 
