@@ -3,31 +3,36 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Harjoitustyo2 {
+public class LakiHT2 {
 
-    public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
-    public static final String SELECTION_TEXT = "printa/printi/info/filter [n]/reset/quit?";
+    public static final char[] IMAGE_CHARS = {'#', '@', '&', '$', '%', 'x', '*', 'o',
+            '|', '!', ';', ':', '\'', ',', '.', ' '};
+    public static final String SELECTION_TEXT =
+            "printa/printi/info/filter [n]/reset/quit?";
 
 
     public static void main(String[] args) {
-        printHello();
-        String fileName = getFileName(args);
-        Scanner sc = new Scanner(System.in);
+        if (validateArgs(args)) {
+            printHello();
+            String fileName = getFileName(args);
+            Scanner sc = new Scanner(System.in);
 
-        if (fileName != null) {
-            boolean jatka = true;
+            if (fileName != null) {
 
-            int[][] image = loadImage(fileName, sc);
-            if (image != null) {
+                boolean jatka = true;
+                int[] bounds = countLines(fileName, sc);
+                int[][] image = loadImage(fileName, sc, bounds);
 
-                while (jatka) {
-                    jatka = doOperation(copyImage(image));
+                if (image != null) {
+
+                    while (jatka) {
+                        jatka = doOperation(copyImage(image), bounds);
+                    }
+
                 }
-
+                printEnd();
             }
         }
-        printEnd();
-
     }
 
     public static void printImage(int[][] kuva) {
@@ -35,7 +40,7 @@ public class Harjoitustyo2 {
 
             for (int i = 0; i < kuva.length; i++) {
                 for (int j = 0; j < kuva[i].length; j++) {
-                    if (String.valueOf(kuva[i][j]).length() == 1){
+                    if (kuva[i][j] > 9) {
                         System.out.print(" ");
                     }
                     System.out.print(IMAGE_CHARS[kuva[i][j]]);
@@ -51,7 +56,10 @@ public class Harjoitustyo2 {
 
             for (int i = 0; i < kuva.length; i++) {
                 for (int j = 0; j < kuva[i].length; j++) {
-                    System.out.print(kuva[i][j]);
+                    if (kuva[i][j] < 10) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(kuva[i][j] + (i + 1 < kuva.length ? " " : ""));
                 }
                 System.out.println();
             }
@@ -60,7 +68,7 @@ public class Harjoitustyo2 {
         }
     }
 
-    public static boolean doOperation(int[][] image) {
+    public static boolean doOperation(int[][] image, int[] bounds) {
         boolean cont = true;
         int[][] tmp = image;
 
@@ -72,17 +80,25 @@ public class Harjoitustyo2 {
             if (userChoice.equalsIgnoreCase("printa")) {
                 printImage(tmp);
             } else if (userChoice.equalsIgnoreCase("printi")) {
-                printImageAsNumbers(tmp);
-            } else if (userChoice.equalsIgnoreCase("info")) {
-                printInfo();
-            } else if (userChoice.startsWith("filter")) {
-                tmp = filterImage(tmp, getFilterLen(userChoice));
 
+                printImageAsNumbers(tmp);
+
+            } else if (userChoice.equalsIgnoreCase("info")) {
+
+                printInfo(image, bounds);
+
+            } else if (userChoice.startsWith("filter")) {
+
+                tmp = filterImage(tmp, getFilterLen(userChoice));
                 System.out.println("filtered");
+
             } else if (userChoice.equalsIgnoreCase("reset")) {
                 return true;
+
             } else if (userChoice.equalsIgnoreCase("quit")) {
+
                 cont = false;
+
             }
 
         }
@@ -90,19 +106,22 @@ public class Harjoitustyo2 {
         return false;
     }
 
-    public static void printInfo() {
+    public static void printInfo(int[][] image, int[] bounds) {
+        int x = bounds[0];
+        int y = bounds[1];
+
 
     }
 
     public static int getFilterLen(String userChoice) {
-            if (userChoice.equalsIgnoreCase("filter")){
-                return 3;
-            }
+        if (userChoice.equalsIgnoreCase("filter")) {
+            return 3;
+        }
 
-            int num = Character.getNumericValue(
-                    userChoice.charAt(userChoice.length() - 1) );
+        int num = Character.getNumericValue(
+                userChoice.charAt(userChoice.length() - 1));
 
-            return num;
+        return num;
     }
 
     public static int[][] filterImage(int[][] image, int filterSize) {
@@ -122,15 +141,14 @@ public class Harjoitustyo2 {
 
     }
 
-    public static int[][] loadImage(String name, Scanner sc) {
+    public static int[][] loadImage(String name, Scanner sc, int[] bounds) {
 
         try {
-
             File tiedosto = new File(name);
             sc = new Scanner(tiedosto);
 
 
-            int[][] kuva = new int[10][10];
+            int[][] kuva = new int[bounds[0]][bounds[1]];
 
             int indeksi = 0;
 
@@ -153,18 +171,18 @@ public class Harjoitustyo2 {
     }
 
     public static int[][] addRow(int[][] kuva, int indeksi, String line) {
-        if (indeksi >= kuva.length) {
-
-            kuva = copyArrayAndMakeItBigger(kuva, 0);
-
-        }
+//        if (indeksi >= kuva.length) {
+//
+//            kuva = copyArrayAndMakeItBigger(kuva, 0);
+//
+//        }
 
         int[] nums = getRowAsInt(line);
         for (int i = 0; i < nums.length; i++) {
 
-            if (i >= kuva[indeksi].length) {
-                kuva = copyArrayAndMakeItBigger(kuva, 1);
-            }
+//            if (i >= kuva[indeksi].length) {
+//                kuva = copyArrayAndMakeItBigger(kuva, 1);
+//            }
 
             kuva[indeksi][i] = nums[i];
 
@@ -174,14 +192,20 @@ public class Harjoitustyo2 {
     }
 
     public static int[] getRowAsInt(String line) {
+//        Splittaa whitespacen välein
         String[] lines = line.split("[\\s]+");
         int[] nums = new int[lines.length];
 
         for (int i = 0; i < lines.length; i++) {
 
-            nums[i] = Integer.parseInt(lines[i]);
-        }
 
+            try {
+                nums[i] = Integer.parseInt(lines[i]);
+            } catch (Exception e) {
+
+            }
+
+        }
         return nums;
     }
 
@@ -197,7 +221,7 @@ public class Harjoitustyo2 {
     public static void printHello() {
         System.out.println("-------------------\n" +
                 "| A S C I I A r t |\n" +
-                "------------------- ");
+                "-------------------");
     }
 
     public static int[][] copyArrayAndMakeItBigger(int[][] arr, int index) {
@@ -228,6 +252,7 @@ public class Harjoitustyo2 {
                             summa += kuva[i][j];
                             arvoja++;
                         }
+
                     }
                 }
             }
@@ -250,8 +275,77 @@ public class Harjoitustyo2 {
         return tmp;
     }
 
+    //    Tarkistaa onko indeksi rajojen sisäpuolella
     public static boolean isInsideBounds(int[][] kuva, int x, int y) {
         return (x >= 0 && y >= 0) && (x < kuva.length && y < kuva[0].length);
+    }
+
+    //    Operaatio lukee tiedoston jonka jälkeen laskee kuinka monta riviä siitä löytyy.
+    //    Lopulta se palauttaa rivien määrän int -arvona.
+    public static int[] countLines(String tiedostonimi, Scanner sc) {
+        int[] lines = new int[2];
+        try {
+
+            File tiedosto = new File(tiedostonimi);
+            sc = new Scanner(tiedosto);
+            while (sc.hasNextLine()) {
+                String s = sc.nextLine();
+                lines[1] = s.split("[\\s]+").length;
+                lines[0]++;
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+        return lines;
+    }
+
+    public static boolean validateArgs(String[] args) {
+
+        if (args.length == 1) {
+
+            return true;
+
+        }
+
+        printError();
+        return false;
+    }
+
+    public static void printError() {
+        System.out.println("Invalid command-line argument!\n" +
+                "Bye, see you soon.");
+    }
+
+
+    //    Muuttaa 2 ulotteisen char taulukon kaikki solut int arvoiksi
+    public static int[][] charactersToIntegers(char[][] charList) {
+        if (charList == null || charList.length < 1 || charList[0].length < 1) {
+            return null;
+        }
+        int[][] tmp = new int[charList.length][charList[0].length];
+
+        for (int i = 0; i < charList.length; i++) {
+            for (int j = 0; j < charList[i].length; j++) {
+                tmp[i][j] = convertToInteger(charList[i][j]);
+            }
+        }
+
+        return tmp;
+    }
+
+    //    muuttaa char muuttujan int arvoksi
+    public static int convertToInteger(char c) {
+        final char t[] = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
+
+        for (int i = 0; i < t.length; i++) {
+            if (c == t[i]) {
+                return i;
+            }
+        }
+        return 0;
     }
 
 

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65d257a4-d09a-4fd8-a98c-c24f18631929" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/Harjoitustyo2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/Harjoitustyo2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Harjoitustyo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Harjoitustyo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/Harjoitustyo2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Harjoitustyo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LakiHT2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,43 +14,51 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Laki2_harjoitustyo2$LakiHT2.ic" NAME="LakiHT2 Coverage Results" MODIFIED="1544891482195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="241" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1740899078">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
           <entry key="gitignore" value="3" />
-          <entry key="java" value="4" />
+          <entry key="java" value="6" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="4" />
+          <entry key="JAVA" value="6" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="7" />
           <entry key="gitignore" value="16" />
-          <entry key="java" value="5630" />
-          <entry key="txt" value="384" />
+          <entry key="java" value="7088" />
+          <entry key="txt" value="385" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5630" />
-          <entry key="PLAIN_TEXT" value="400" />
+          <entry key="JAVA" value="7088" />
+          <entry key="PLAIN_TEXT" value="408" />
         </counts>
       </usages-collector>
     </session>
@@ -88,31 +96,17 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Harjoitustyo2.java">
+        <entry file="file://$PROJECT_DIR$/src/LakiHT2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="324">
+              <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5197#5198#0" expanded="true" />
+                <element signature="e#5252#5253#0" expanded="true" />
+                <element signature="e#5290#5291#0" expanded="true" />
+                <element signature="e#5346#5347#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/In.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3042">
-              <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -137,9 +131,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Harjoitustyo2.java" />
+        <option value="$PROJECT_DIR$/src/test.txt" />
+        <option value="$PROJECT_DIR$/src/LakiHT2.java" />
       </list>
     </option>
   </component>
@@ -161,7 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -179,13 +173,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="getFilterLen&#9;PSI&#9;JAVA://Harjoitustyo2#getFilterLen&#10;getRowsA&#9;PSI&#9;JAVA://Harjoitustyo2#getRowsAsInt&#10;loadImage&#9;PSI&#9;JAVA://Harjoitustyo2#loadImage&#10;filter&#9;PSI&#9;JAVA://Harjoitustyo2#filterImage&#10;copyImage&#9;PSI&#9;JAVA://Harjoitustyo2#copyImage&#10;countaver&#9;PSI&#9;JAVA://Harjoitustyo2#countAverage&#10;count&#9;PSI&#9;JAVA://com.sun.tools.jdi.JDWP.EventRequest.Set.Modifier.Count" />
+    <property name="SearchEverywhereHistoryKey" value="doOperation&#9;PSI&#9;JAVA://org.omg.CORBA.DomainManagerOperations&#10;getFilterLen&#9;PSI&#9;JAVA://Harjoitustyo2#getFilterLen&#10;getRowsA&#9;PSI&#9;JAVA://Harjoitustyo2#getRowsAsInt&#10;loadImage&#9;PSI&#9;JAVA://Harjoitustyo2#loadImage&#10;filter&#9;PSI&#9;JAVA://Harjoitustyo2#filterImage&#10;copyImage&#9;PSI&#9;JAVA://Harjoitustyo2#copyImage&#10;countaver&#9;PSI&#9;JAVA://Harjoitustyo2#countAverage&#10;count&#9;PSI&#9;JAVA://com.sun.tools.jdi.JDWP.EventRequest.Set.Modifier.Count" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544553580035" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544986466733" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -203,8 +198,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Harjoitustyo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Harjoitustyo2" />
+    <configuration name="LakiHT2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LakiHT2" />
       <module name="Laki2_harjoitustyo2" />
       <option name="PROGRAM_PARAMETERS" value="src/test.txt" />
       <method v="2">
@@ -213,7 +208,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Harjoitustyo2" />
+        <item itemvalue="Application.LakiHT2" />
       </list>
     </recent_temporary>
   </component>
@@ -230,12 +225,13 @@
       <workItem from="1543662639328" duration="28147000" />
       <workItem from="1544019426086" duration="4118000" />
       <workItem from="1544540356802" duration="5891000" />
-      <workItem from="1544881598895" duration="234000" />
+      <workItem from="1544881598895" duration="11637000" />
+      <workItem from="1544951929490" duration="12791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46236000" />
+    <option name="totallyTimeSpent" value="70419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -250,8 +246,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49457702" visible="true" weight="0.21481876" />
-      <window_info id="Structure" order="1" sideWeight="0.505423" side_tool="true" visible="true" weight="0.21481876" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4934924" visible="true" weight="0.21695095" />
+      <window_info id="Structure" order="1" sideWeight="0.5065076" side_tool="true" visible="true" weight="0.21695095" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -260,14 +256,14 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3275488" />
-      <window_info anchor="bottom" x="-1920" y="0" width="1920" height="1040" id="Debug" order="3" type="FLOATING" weight="0.3991323" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29826465" />
+      <window_info anchor="bottom" x="-1920" y="0" width="1920" height="1040" id="Debug" order="3" type="FLOATING" visible="true" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.330076" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3275488" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -279,6 +275,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,10 +288,16 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Harjoitustyo2.java</url>
-          <line>222</line>
+          <url>file://$PROJECT_DIR$/src/LakiHT2.java</url>
+          <line>240</line>
           <properties />
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LakiHT2.java</url>
+          <line>196</line>
+          <properties />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -310,27 +313,45 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Harjoitustyo2.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.corba/org/omg/CORBA/DomainManagerOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="288">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/In.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3042">
-          <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
+        <state relative-caret-position="198">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/In.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LakiHT2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5197#5198#0" expanded="true" />
+            <element signature="e#5252#5253#0" expanded="true" />
+            <element signature="e#5290#5291#0" expanded="true" />
+            <element signature="e#5346#5347#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
