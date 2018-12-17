@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65d257a4-d09a-4fd8-a98c-c24f18631929" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/LakiHT2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/LakiHT2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Laki2_harjoitustyo2/LakiHT2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LakiHT2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LakiHT2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,27 +36,27 @@
           <entry key="class" value="1" />
           <entry key="gitignore" value="4" />
           <entry key="java" value="6" />
-          <entry key="txt" value="3" />
+          <entry key="txt" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="6" />
-          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
           <entry key="gitignore" value="26" />
-          <entry key="java" value="8666" />
+          <entry key="java" value="9961" />
           <entry key="txt" value="386" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8666" />
+          <entry key="JAVA" value="9961" />
           <entry key="PLAIN_TEXT" value="419" />
         </counts>
       </usages-collector>
@@ -95,11 +94,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LakiHT2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="42">
+              <caret line="273" column="39" lean-forward="true" selection-start-line="273" selection-start-column="39" selection-end-line="273" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4464#4465#0" expanded="true" />
@@ -113,7 +112,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_files/file_homer.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="126" selection-start-line="9" selection-start-column="126" selection-end-line="9" selection-end-column="126" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_files/output_homer.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="26" column="132" selection-start-line="25" selection-start-column="130" selection-end-line="26" selection-end-column="132" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -134,6 +151,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>load</find>
+      <find>kuva</find>
+      <find>indeksi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -144,8 +163,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/Harjoitustyo2.java" />
         <option value="$PROJECT_DIR$/src/test.txt" />
-        <option value="$PROJECT_DIR$/src/LakiHT2.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/LakiHT2.java" />
       </list>
     </option>
   </component>
@@ -180,6 +199,11 @@
               <item name="Laki2_harjoitustyo2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Laki2_harjoitustyo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laki2_harjoitustyo2" type="462c0819:PsiDirectoryNode" />
+              <item name="test_files" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -191,7 +215,7 @@
     <property name="SearchEverywhereHistoryKey" value="doOperation&#9;PSI&#9;JAVA://org.omg.CORBA.DomainManagerOperations&#10;getFilterLen&#9;PSI&#9;JAVA://Harjoitustyo2#getFilterLen&#10;getRowsA&#9;PSI&#9;JAVA://Harjoitustyo2#getRowsAsInt&#10;loadImage&#9;PSI&#9;JAVA://Harjoitustyo2#loadImage&#10;filter&#9;PSI&#9;JAVA://Harjoitustyo2#filterImage&#10;copyImage&#9;PSI&#9;JAVA://Harjoitustyo2#copyImage&#10;countaver&#9;PSI&#9;JAVA://Harjoitustyo2#countAverage&#10;count&#9;PSI&#9;JAVA://com.sun.tools.jdi.JDWP.EventRequest.Set.Modifier.Count" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545038838717" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545056960344" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -212,7 +236,7 @@
     <configuration name="LakiHT2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LakiHT2" />
       <module name="Laki2_harjoitustyo2" />
-      <option name="PROGRAM_PARAMETERS" value="test_files/file_brain_check.txt" />
+      <option name="PROGRAM_PARAMETERS" value="test_files/file_homer.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,12 +261,12 @@
       <workItem from="1544019426086" duration="4118000" />
       <workItem from="1544540356802" duration="5891000" />
       <workItem from="1544881598895" duration="11637000" />
-      <workItem from="1544951929490" duration="26114000" />
+      <workItem from="1544951929490" duration="33420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83742000" />
+    <option name="totallyTimeSpent" value="91048000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -257,7 +281,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4934924" visible="true" weight="0.21695095" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4934924" visible="true" weight="0.21695095" />
       <window_info id="Structure" order="1" sideWeight="0.5065076" side_tool="true" visible="true" weight="0.21695095" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -303,12 +327,6 @@
           <line>223</line>
           <properties />
           <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LakiHT2.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -356,10 +374,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_files/output_homer.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="132" selection-start-line="25" selection-start-column="130" selection-end-line="26" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_files/input_homer.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_files/file_homer.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="126" selection-start-line="9" selection-start-column="126" selection-end-line="9" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LakiHT2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="42">
+          <caret line="273" column="39" lean-forward="true" selection-start-line="273" selection-start-column="39" selection-end-line="273" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4464#4465#0" expanded="true" />
@@ -369,13 +411,6 @@
             <element signature="e#4715#4716#0" expanded="true" />
             <element signature="e#4771#4772#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>

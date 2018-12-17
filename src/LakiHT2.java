@@ -20,28 +20,30 @@ public class LakiHT2 {
 
             if (fileName != null) {
 
-                boolean jatka = true;
+                boolean continueLoop = true;
                 int[] bounds = countLines(fileName, sc);
                 char[][] image = loadImage(fileName, sc, bounds);
 
                 if (image != null) {
 
-                    while (jatka) {
-                        jatka = doOperation(copyImage(image), bounds);
+                    while (continueLoop) {
+                        continueLoop = doOperation(copyImage(image), bounds);
                     }
 
+                    printEnd();
+                } else {
+                    printError();
                 }
-                printEnd();
             }
         }
     }
 
-    public static void printImage(int[][] kuva) {
-        if (kuva != null) {
+    public static void printImage(int[][] image) {
+        if (image != null) {
 
-            for (int i = 0; i < kuva.length; i++) {
-                for (int j = 0; j < kuva[i].length; j++) {
-                    System.out.print(IMAGE_CHARS[kuva[i][j]]);
+            for (int i = 0; i < image.length; i++) {
+                for (int j = 0; j < image[i].length; j++) {
+                    System.out.print(IMAGE_CHARS[image[i][j]]);
                 }
 
                 System.out.println();
@@ -49,15 +51,15 @@ public class LakiHT2 {
         }
     }
 
-    public static void printImageAsNumbers(int[][] kuva) {
-        if (kuva != null) {
+    public static void printImageAsNumbers(int[][] image) {
+        if (image != null) {
 
-            for (int i = 0; i < kuva.length; i++) {
-                for (int j = 0; j < kuva[j].length; j++) {
-                    if (kuva[i][j] < 10) {
+            for (int i = 0; i < image.length; i++) {
+                for (int j = 0; j < image[i].length; j++) {
+                    if (image[i][j] < 10) {
                         System.out.print(" ");
                     }
-                    System.out.print(kuva[i][j] + (j + 1 < kuva[j].length ? " " : ""));
+                    System.out.print(image[i][j] + (j + 1 < image[i].length ? " " : ""));
                 }
                 System.out.println();
             }
@@ -66,17 +68,20 @@ public class LakiHT2 {
         }
     }
 
+//
     public static boolean doOperation(char[][] image, int[] bounds) {
-        boolean cont = true;
+        boolean continueLoop = true;
         int[][] tmp = charactersToIntegers(image);
 
-        while (cont) {
+        while (continueLoop) {
             System.out.println(SELECTION_TEXT);
 
             String userChoice = In.readString();
 
             if (userChoice.equalsIgnoreCase("printa")) {
+
                 printImage(tmp);
+
             } else if (userChoice.equalsIgnoreCase("printi")) {
 
                 printImageAsNumbers(tmp);
@@ -94,7 +99,7 @@ public class LakiHT2 {
 
             } else if (userChoice.equalsIgnoreCase("quit")) {
 
-                cont = false;
+                continueLoop = false;
 
             }
 
@@ -103,6 +108,7 @@ public class LakiHT2 {
         return false;
     }
 
+//    Prints image info
     public static void printInfo(int[][] image, int[] bounds) {
         int x = bounds[0];
         int y = bounds[1];
@@ -115,27 +121,30 @@ public class LakiHT2 {
         }
 
     }
-
+//  Finds out wanted filter length and returns it
     public static int getFilterLen(String userChoice) {
         if (userChoice.equalsIgnoreCase("filter")) {
             return 3;
         }
 
-        int num = Character.getNumericValue(
-                userChoice.charAt(userChoice.length() - 1));
-
-        return num;
+        return Integer.parseInt(userChoice.substring(7));
     }
 
+//    Filters the array with given parameters
     public static int[][] filterImage(int[][] image, int filterSize) {
 
-        int[][] tmp = image;
+        int[][] tmp = new int[image.length][image[0].length];
 
         for (int i = 0; i < tmp.length; i++) {
             for (int j = 0; j < tmp[i].length; j++) {
 
-                tmp[i][j] = countAverage(tmp, i, j, filterSize);
+                if (enoughSpaceForFilter(image, i, j, filterSize)) {
 
+                    tmp[i][j] = countAverage(image, i, j, filterSize);
+
+                } else {
+                    tmp[i][j] = image[i][j];
+                }
             }
         }
 
@@ -143,42 +152,42 @@ public class LakiHT2 {
         return tmp;
 
     }
-
+//    Loads image from a text file and returns it
     public static char[][] loadImage(String name, Scanner sc, int[] bounds) {
 
         try {
+
             File tiedosto = new File(name);
             sc = new Scanner(tiedosto);
 
+            char[][] image = new char[bounds[0]][bounds[1]];
 
-            char[][] kuva = new char[bounds[0]][bounds[1]];
-
-            int indeksi = 0;
-
+            int index = 0;
 
             while (sc.hasNextLine()) {
 
-                kuva[indeksi] = addRow(sc.nextLine());
-                indeksi++;
+                image[index] = addRow(sc.nextLine());
+                index++;
 
             }
 
-
             sc.close();
-            return kuva;
+            return image;
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+//            System.out.println(Arrays.toString(e.getStackTrace()));
         }
 
         return null;
     }
 
+//    Returns a String as char array
     public static char[] addRow(String line) {
         return convertLineToCharArray(line.split(""));
     }
 
+//    Converts a string to char array
     public static char[] convertLineToCharArray(String[] chars) {
         char[] tmp = new char[chars.length];
 
@@ -191,52 +200,44 @@ public class LakiHT2 {
         return tmp;
     }
 
-
+// Returns filename from args
     public static String getFileName(String[] args) {
         return args.length > 0 ? args[0] : null;
     }
 
-
+// Prints End message
     public static void printEnd() {
         System.out.println("Bye, see you soon.");
     }
 
+//    Prints hello message
     public static void printHello() {
         System.out.println("-------------------\n" +
                 "| A S C I I A r t |\n" +
                 "-------------------");
     }
 
-    public static int[][] copyArrayAndMakeItBigger(int[][] arr, int index) {
 
-        int[][] copy = index == 0 ? new int[arr.length + 1][arr[0].length] :
-                new int[arr.length][arr[0].length + 1];
+// Counts and returns average integer in the filtered area
+    public static int countAverage(int[][] image, int x, int y, int filterSize) {
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                copy[i][j] = arr[i][j];
-            }
-        }
-        return copy;
-    }
-
-    public static int countAverage(int[][] kuva, int x, int y, int filterSize) {
         double summa = 0;
         double arvoja = 0;
         int size = (int) Math.floor(filterSize / 2);
+        int xstart = x - size;
+        int xend = x + size;
+        int ystart = y - size;
+        int yend = y + size;
 
-        for (int k = 0; k < filterSize; k++) {
+        for (int i = xstart; i <= xend; i++) {
+            for (int j = ystart; j <= yend; j++) {
+                if (i >= 0 && j >= 0) {
 
-            for (int i = x - size; i < x + size; i++) {
-                for (int j = y - size; j < y + size; j++) {
-                    if (i >= 0 && y >= 0) {
-
-                        if (isInsideBounds(kuva, i, j)) {
-                            summa += kuva[i][j];
-                            arvoja++;
-                        }
-
+                    if (isInsideBounds(image, i, j)) {
+                        summa += image[i][j];
+                        arvoja++;
                     }
+
                 }
             }
 
@@ -245,7 +246,7 @@ public class LakiHT2 {
         return (int) Math.round(summa / arvoja);
     }
 
-
+    //    Copies the image array
     public static char[][] copyImage(char[][] image) {
         char[][] tmp = new char[image.length][image[0].length];
         for (int i = 0; i < image.length; i++) {
@@ -259,8 +260,8 @@ public class LakiHT2 {
     }
 
     //    Tarkistaa onko indeksi rajojen sisäpuolella
-    public static boolean isInsideBounds(int[][] kuva, int x, int y) {
-        return (x >= 0 && y >= 0) && (x < kuva.length && y < kuva[0].length);
+    public static boolean isInsideBounds(int[][] image, int x, int y) {
+        return (x >= 0 && y >= 0) && (x < image.length && y < image[0].length);
     }
 
     //    Operaatio lukee tiedoston jonka jälkeen laskee kuinka monta riviä siitä löytyy.
@@ -285,6 +286,7 @@ public class LakiHT2 {
         return lines;
     }
 
+    //    Checks that given arguments are valid
     public static boolean validateArgs(String[] args) {
 
         if (args.length == 1) {
@@ -297,6 +299,7 @@ public class LakiHT2 {
         return false;
     }
 
+    //    Prints error message
     public static void printError() {
         System.out.println("Invalid command-line argument!\n" +
                 "Bye, see you soon.");
@@ -321,17 +324,17 @@ public class LakiHT2 {
 
     //    muuttaa char muuttujan int arvoksi
     public static int convertToInteger(char c) {
-        final char t[] = {'#', '@', '&', '$', '%', 'x', '*', 'o', '|', '!', ';', ':', '\'', ',', '.', ' '};
 
-        for (int i = 0; i < t.length; i++) {
-            if (c == t[i]) {
+        for (int i = 0; i < IMAGE_CHARS.length; i++) {
+            if (c == IMAGE_CHARS[i]) {
                 return i;
             }
         }
         return 0;
     }
 
-    public static char[][] convertIntToCharArray(int[][] image){
+    //    Converts Integer array to Char array
+    public static char[][] convertIntToCharArray(int[][] image) {
         char[][] tmp = new char[image.length][image[0].length];
 
         for (int i = 0; i < image.length; i++) {
@@ -347,7 +350,7 @@ public class LakiHT2 {
 
     //    Vertaa taulukkoa toiseen 2 -ulotteiseen taulukkoon ja laskee niiden solujen
 //    esiintymät.
-    public static int countFrequency(int[][] image, char c){
+    public static int countFrequency(int[][] image, char c) {
         int count = 0;
         char[][] tmp = convertIntToCharArray(image);
 
@@ -355,7 +358,7 @@ public class LakiHT2 {
         for (int i = 0; i < tmp.length; i++) {
             for (int j = 0; j < tmp[i].length; j++) {
 
-                if (tmp[i][j] == c){
+                if (tmp[i][j] == c) {
                     count++;
                 }
 
@@ -364,5 +367,26 @@ public class LakiHT2 {
 
 
         return count;
+    }
+
+    //    Checks if there is enough space for filter
+    public static boolean enoughSpaceForFilter(int[][] image, int x, int y, int filterSize) {
+
+        int size = (int) Math.floor(filterSize / 2);
+
+        for (int k = 0; k < filterSize; k++) {
+
+            for (int i = x - size; i <= x + size; i++) {
+                for (int j = y - size; j <= y + size; j++) {
+
+                    if (!isInsideBounds(image, i, j)) {
+                        return false;
+
+                    }
+                }
+            }
+
+        }
+        return true;
     }
 }
